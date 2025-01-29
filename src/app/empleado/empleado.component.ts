@@ -20,6 +20,7 @@ export class EmpleadoComponent {
       new Empleado('Manolo', 35, "Administrativo", true),
       new Empleado('Ana', 25, "Programador", true),
       new Empleado('Maria', 28, "Ingeniera", false)
+      //hola
     ];
 
     this.trabajadoresExterno = true;
