@@ -7,12 +7,15 @@ import { Empleado } from './empleado';
   styleUrls: ['./empleado.component.css']
 })
 
+//esta es una definicion de  una clase
 export class EmpleadoComponent {
+  //defines los atributos
   public titulo = 'titulo empleado';
   public empleado: Empleado;
   public trabajador: Empleado[];
   public trabajadoresExterno: boolean;
 
+  
   constructor() {
     this.empleado = new Empleado('Pedro', 30, "Gerente", true);
 
