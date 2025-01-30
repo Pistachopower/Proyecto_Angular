@@ -8,7 +8,7 @@ import { Empleado } from './empleado';
 })
 
 export class EmpleadoComponent {
-  public titulo = 'Bienvenido';
+  public titulo = 'titulo empleado';
   public empleado: Empleado;
   public trabajador: Empleado[];
   public trabajadoresExterno: boolean;
