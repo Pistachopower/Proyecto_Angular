@@ -10,22 +10,16 @@ import { Empleado } from './empleado';
 //esta es una definicion de  una clase
 export class EmpleadoComponent {
   //defines los atributos
-  public titulo = 'titulo empleado';
-  public empleado: Empleado;
-  public trabajador: Empleado[];
-  public trabajadoresExterno: boolean;
+  public titulo = 'El empleado';
+  public cargo = 'administrador';
+  public contratado = 'si';
 
+  //definimos el array
+  public trabajadores:Array<string> = [];
   
+
   constructor() {
-    this.empleado = new Empleado('Pedro', 30, "Gerente", true);
-
-    this.trabajador = [
-      new Empleado('Manolo', 35, "Administrativo", true),
-      new Empleado('Ana', 25, "Programador", true),
-      new Empleado('Maria', 28, "Ingeniera", false)
-      //hola
-    ];
-
-    this.trabajadoresExterno = true;
+    //rellenamos el array de trabajadores
+    this.trabajadores= ['juan', 'maria']; 
   }
 }
