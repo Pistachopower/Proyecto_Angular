@@ -31,9 +31,8 @@ export class ProductosComponent {
   ngOnInit(): void {
     this.servicio.getProductos().subscribe({
       next: (data) => {
-        this.servicio.productos = data;
-        // console.log(this.servicio.productos);
-        this.productos = data;
+        this.servicio.productos = data.products;
+        this.productos = data.products;
 
         if (this.filtro != "") { //se ejecuta cuando buscas desde el header o home
           this.filtrarProductos(this.filtro);
@@ -71,7 +70,7 @@ export class ProductosComponent {
 
     this.servicio.sortProductos(sort).subscribe({
       next: (data) => {
-        this.productos = data;
+        this.productos = data.products;
       },
       error: (error) => {
         console.log(error);

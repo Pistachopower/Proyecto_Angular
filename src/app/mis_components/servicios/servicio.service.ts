@@ -6,7 +6,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicioService {
-  
+  private readonly apiUrl = 'https://dummyjson.com/products';
 
   constructor(private http: HttpClient) {  
   }
@@ -30,17 +30,17 @@ export class ServicioService {
   }
 
   getProductos(){
-    return this.http.get('https://fakestoreapi.com/products');
+    return this.http.get<{ products: any[] }>(this.apiUrl);
   }
 
 
   sortProductos(sort: string){
-    //console.log('sortProductos');
-    return this.http.get('https://fakestoreapi.com/products?sort='+sort);
+    const order = sort === 'desc' ? 'desc' : 'asc';
+    return this.http.get<{ products: any[] }>(`${this.apiUrl}?sortBy=title&order=${order}`);
   }
 
   getProductoById(id: string) {
-    return this.http.get(`https://fakestoreapi.com/products/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
 }
