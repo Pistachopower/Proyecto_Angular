@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.servicio.getProductos().subscribe({
       //obtenemos los datos y los guardamos en la variable productos
       next: (data) => { //data es la respuesta del servidor (api)
-        this.productos = data;
+        this.productos = data.products;
         //console.log('Productos', this.productos);
       },
       error: (error) => {

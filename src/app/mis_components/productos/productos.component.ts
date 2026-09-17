@@ -46,7 +46,6 @@ export class ProductosComponent {
 
   //método para filtrar productos
   filtrarProductos(palabra: string) {
-    console.log(palabra);
     if (palabra != "") {
       this.productos = this.servicio.productos.filter((producto: any) => {
         //si la palabra existe en la api devuelve array
@@ -54,36 +53,30 @@ export class ProductosComponent {
       });
 
       //cuando el array esta vacio
-    if (this.productos.length == 0) {
-      this.productosNoEncontrados = true;
-
+      if (this.productos.length == 0) {
+        this.productosNoEncontrados = true;
+      } else {
+        this.productosNoEncontrados = false;
+      }
     } else {
+      this.productos = [...this.servicio.productos];
       this.productosNoEncontrados = false;
-    }
-
-
     }
   }
 
   //método para ordenar productos
   ordenarProductos(sort: string) {
-
-    this.servicio.sortProductos(sort).subscribe({
-      next: (data) => {
-        this.productos = data.products;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    const orden = sort === 'desc' ? -1 : 1;
+    this.productos = [...this.productos].sort((a: any, b: any) =>
+      a.title.localeCompare(b.title) * orden
+    );
   }
 
   ordenarPorPrecio() {
-    if (this.ordenarAscendente) {
-      this.productos.sort((a: any, b: any) => a.price - b.price);
-    } else {
-      this.productos.sort((a: any, b: any) => b.price - a.price);
-    }
+    const orden = this.ordenarAscendente ? 1 : -1;
+    this.productos = [...this.productos].sort((a: any, b: any) =>
+      (a.price - b.price) * orden
+    );
     this.ordenarAscendente = !this.ordenarAscendente; // Cambia el valor del booleano
   }
 
