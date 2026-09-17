@@ -1,65 +1,87 @@
-# AngAppV19
+# La FakeZom
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Aplicacion web desarrollada con Angular 19 para explorar un catalogo de productos.
+Los datos se obtienen desde la API publica [DummyJSON](https://dummyjson.com/docs/products).
 
-You can download the proyect and use it running the next docker image for the enviorement,inside the main project folder:
+## Demo
 
-```
-docker run -it -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 4200:4200 mflober/angapp19-image:1.0
-```
+Visita la aplicacion desplegada en GitHub Pages:
 
-## Development server
+[https://pistachopower.github.io/Proyecto_Angular/](https://pistachopower.github.io/Proyecto_Angular/)
 
-To start a local development server, run inside the proyect folder:
+## Funcionalidades
 
-```bash
-ng serve
-```
+- Carrusel de productos destacados en la pagina de inicio.
+- Listado de productos con imagen, nombre y precio.
+- Busqueda por nombre desde la barra de navegacion.
+- Orden alfabetico ascendente y descendente.
+- Ordenacion por precio alternando menor y mayor precio.
+- Vista de detalle de cada producto.
+- Formulario de login conectado a DummyJSON Auth.
+- Despliegue automatico en GitHub Pages mediante GitHub Actions.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+La consulta de productos, el detalle y la navegacion publica funcionan sin iniciar sesion.
 
-## Code scaffolding
+## Tecnologias
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 19 y TypeScript.
+- Bootstrap 5.
+- RxJS y HttpClient.
+- DummyJSON Products y Auth API.
+- GitHub Pages y GitHub Actions.
 
-```bash
-ng generate component component-name
-```
+## Ejecucion local
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Requisitos: Node.js 22 o superior y npm.
 
 ```bash
-ng build
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Abre [http://localhost:4200](http://localhost:4200) en el navegador.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Build de produccion
 
 ```bash
-ng test
+npm run build -- --base-href /Proyecto_Angular/
 ```
 
-## Running end-to-end tests
+Los archivos generados se guardan en `dist/ang-app-v19`.
 
-For end-to-end (e2e) testing, run:
+## API utilizada
 
-```bash
-ng e2e
+- Listado: `https://dummyjson.com/products`
+- Producto individual: `https://dummyjson.com/products/{id}`
+- Login: `https://dummyjson.com/auth/login`
+
+Credenciales de prueba de DummyJSON:
+
+```text
+Usuario: emilys
+Contraseña: emilyspass
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Estructura principal
 
-## Additional Resources
+```text
+src/app/
+├── app.routes.ts
+├── app.config.ts
+└── mis_components/
+	├── contacto/
+	├── detalle/
+	├── guards/
+	├── header/
+	├── home/
+	├── login/
+	├── productos/
+	└── servicios/
+		├── email.service.ts
+		├── login.service.ts
+		└── servicio.service.ts
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Despliegue
+
+Cada push a la rama `main` ejecuta [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml), construye la aplicacion y la publica en GitHub Pages.

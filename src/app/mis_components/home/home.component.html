@@ -52,56 +52,17 @@
       </h2>
       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
         <div class="accordion-body">
-          <div class="container">
-            <h2>📁 Estructura del Proyecto</h2>
-    
-            <div class="folder">📁 app/</div>
-            <div class="file">📄 app.component.css - Estilos del componente principal</div>
-            <div class="file">📄 app.component.html - Estructura HTML del componente principal</div>
-            <div class="file">📄 app.component.ts - Lógica del componente principal</div>
-            <div class="file">📄 app.config.server.ts - Configuración específica para el servidor</div>
-            <div class="file">📄 app.config.ts - Configuración general de la aplicación</div>
-            <div class="file">📄 app.routes.server.ts - Definición de rutas en el servidor</div>
-            <div class="file">📄 app.routes.ts - Definición de rutas en la aplicación</div>
-    
-            <div class="folder">📁 mis_components/</div>
-    
-            <div class="folder">📁 contacto/</div>
-            <div class="file">📄 contacto.component.css - Estilos del componente Contacto</div>
-            <div class="file">📄 contacto.component.html - Estructura HTML del componente Contacto</div>
-            <div class="file">📄 contacto.component.ts - Lógica del componente Contacto</div>
-    
-            <div class="folder">📁 detalle/</div>
-            <div class="file">📄 detalle.component.css - Estilos del componente Detalle</div>
-            <div class="file">📄 detalle.component.html - Estructura HTML del componente Detalle</div>
-            <div class="file">📄 detalle.component.ts - Lógica del componente Detalle</div>
-    
-            <div class="folder">📁 header/</div>
-            <div class="file">📄 header.component.css - Estilos del componente Header</div>
-            <div class="file">📄 header.component.html - Estructura HTML del componente Header</div>
-            <div class="file">📄 header.component.ts - Lógica del componente Header</div>
-    
-            <div class="folder">📁 home/</div>
-            <div class="file">📄 home.component.css - Estilos del componente Home</div>
-            <div class="file">📄 home.component.html - Estructura HTML del componente Home</div>
-            <div class="file">📄 home.component.ts - Lógica del componente Home</div>
-    
-            <div class="folder">📁 productos/</div>
-            <div class="file">📄 productos.component.css - Estilos del componente Productos</div>
-            <div class="file">📄 productos.component.html - Estructura HTML del componente Productos</div>
-            <div class="file">📄 productos.component.ts - Lógica del componente Productos</div>
-    
-            <div class="folder">📁 servicios/</div>
-            <div class="file">📄 email.service.ts - Servicio para gestionar el envío de correos</div>
-            <div class="file">📄 servicio.service.ts - Servicio para la lógica de negocio</div>
-    
-            <div class="folder">📁 Raíz del proyecto</div>
-            <div class="file">📄 index.html - Página principal de la aplicación</div>
-            <div class="file">📄 main.server.ts - Archivo principal para el servidor</div>
-            <div class="file">📄 main.ts - Archivo principal para iniciar la aplicación</div>
-            <div class="file">📄 server.ts - Configuración del servidor</div>
-            <div class="file">📄 styles.css - Estilos globales de la aplicación</div>
-        </div>
+          <p>La aplicacion esta organizada por componentes y servicios:</p>
+          <ul>
+            <li><strong>home/</strong>: carrusel y contenido de inicio.</li>
+            <li><strong>productos/</strong>: listado, busqueda y ordenacion.</li>
+            <li><strong>detalle/</strong>: informacion de un producto.</li>
+            <li><strong>header/</strong>: navegacion y busqueda global.</li>
+            <li><strong>login/</strong>: autenticacion opcional.</li>
+            <li><strong>contacto/</strong>: formulario de contacto.</li>
+            <li><strong>servicios/</strong>: acceso a DummyJSON, autenticacion y correo.</li>
+            <li><strong>guards/</strong>: proteccion de rutas que requieran autenticacion.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -113,28 +74,24 @@
       </h2>
       <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
         <div class="accordion-body">
-          <strong>EmailJS y FakeStore</strong> 
+            <strong>DummyJSON y EmailJS</strong>
           <div class="container">
-            <h2>📌 1. email.service.ts</h2>
-            <p>Este servicio se encarga de gestionar las funcionalidades relacionadas con el envío de correos electrónicos.</p>
+            <h2>1. servicio.service.ts</h2>
+            <p>Centraliza las peticiones a DummyJSON para obtener el listado y el detalle de los productos.</p>
             <ul>
-                <li>Incluye métodos para enviar correos, validar direcciones y manejar respuestas de servidores de correo.</li>
+              <li>Obtiene productos y productos individuales.</li>
+              <li>Permite ordenar el catalogo por nombre.</li>
             </ul>
-    
-            <h2>📌 2. servicio.service.ts</h2>
-            <p>Este servicio maneja la lógica de negocio y la comunicación con la API para obtener datos de productos.</p>
-            <ul>
-                <li>Contiene métodos para:</li>
-                <ul>
-                    <li>📦 Obtener una lista de productos desde una API externa.</li>
-                    <li>🔍 Filtrar y ordenar productos según criterios específicos.</li>
-                </ul>
-                <li>Es clave para que los componentes gestionen los datos de forma eficiente.</li>
-            </ul>
-    
-            <h2>📌 Resumen</h2>
-            <p>Estos servicios son <span class="highlight">componentes esenciales</span> en la arquitectura de la aplicación, ya que permiten la separación de la lógica de negocio de la presentación. Esto facilita el <span class="highlight">mantenimiento</span> y la <span class="highlight">escalabilidad</span> del proyecto. 🚀</p>
-        </div>
+
+            <h2>2. login.service.ts</h2>
+            <p>Gestiona el inicio de sesion mediante DummyJSON Auth y guarda el token de la sesion.</p>
+
+            <h2>3. email.service.ts</h2>
+            <p>Gestiona el envio de mensajes desde el formulario de contacto mediante EmailJS.</p>
+
+            <h2>Resumen</h2>
+            <p>Los componentes se encargan de la interfaz y los servicios separan la comunicacion con APIs externas y otras funcionalidades.</p>
+          </div>
         </div>
       </div>
     </div>
