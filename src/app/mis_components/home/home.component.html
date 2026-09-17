@@ -11,7 +11,7 @@
     <!-- Contenedor de imágenes -->
     <div class="carousel-inner">
       <div *ngFor="let producto of productos; let i = index" class="carousel-item" [class.active]="i === 0">
-        <img [src]="producto.image || 'assets/img/default.jpg'" class="d-block w-100"
+        <img [src]="producto.thumbnail" class="d-block w-100"
           [alt]="producto.title" style="height: 300px; object-fit: contain;">
       </div>
     </div>
